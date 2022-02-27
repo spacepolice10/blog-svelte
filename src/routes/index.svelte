@@ -38,3 +38,10 @@
     export let posts;
     console.log(posts)
 </script>
+
+<div>
+    {#each posts as post} 
+        <h1>{post.title}</h1>
+        <p>{@html post.content}</p>
+    {/each}
+</div>
