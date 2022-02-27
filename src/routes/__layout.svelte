@@ -1,7 +1,17 @@
 <script>
   import "../app.css";
+  let darkStyle = false;
+  const changeStyle = () => {
+    darkStyle = ! darkStyle
+  }
 </script>
 
-<div class="text-white bg-black min-h-screen">
-  <slot />
+<div class={darkStyle ? 'dark' : ''}>
+  
+  <div class="bg-white text-blakc dark:text-white dark:bg-black min-h-screen">
+    <button class="ml-5 mt-4" on:click={changeStyle}>
+      <img class="w-7 h-7" src='/static/lightbulb.svg' alt='lightbulb' />
+    </button>
+    <slot />
+  </div>
 </div>
