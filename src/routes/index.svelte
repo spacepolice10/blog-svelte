@@ -57,7 +57,7 @@
     console.log(posts)
 </script>
 
-<div class="grid grid-cols-3 gap-5 p-5 cursor-pointer">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-5 p-5 cursor-pointer">
     {#each posts as post} 
     <div class="flex flex-col">
         <img src={post.featuredImage.node.mediaItemUrl} alt={post.featuredImage.node.altText} />
