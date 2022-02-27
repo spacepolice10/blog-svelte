@@ -76,11 +76,12 @@
 </script>
 
 <script>
+    import { fly } from 'svelte/transition'
 	export let post
     console.log(post)
 </script>
 
-<div class="flex justify-center items-center w-full min-h-screen">
+<div transition:fly="{{ y: -150, duration: 400 }}" class="flex justify-center items-center w-full min-h-screen">
     <div class="grid grid-cols-1 gap-10 w-10/12">
         <h1 class="font-bold text-4xl">{post.title}</h1>
         <div class="flex gap-10">
@@ -88,7 +89,7 @@
             <div class="grid grid-cols-1">
                 <p>Author: {post.author.node.firstName} {post.author.node.lastName}</p>
                 <p>Comments: {post.commentCount}</p>
-                <div class="flex gap-2 opacity-50">
+                <div class="flex gap-2 opacity-80 dark:opacity-50">
                     {#each post.tags.nodes as tag}
                     <p class="font-thin"># {tag.name}</p>
                     {/each}
@@ -100,7 +101,7 @@
             </p>
         {#each post.comments.nodes as comment}
         <div class="flex">
-            <p class="flex opacity-50 font-thin"> -{@html comment.content}</p>
+            <p class="flex opacity-80 font-thin dark:opacity-50">{@html comment.content}</p>
         </div>
         {/each}
     </div>

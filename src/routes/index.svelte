@@ -56,13 +56,14 @@
 </script>
 
 <script>
+    import { fly } from 'svelte/transition'
     export let posts;
     console.log(posts)
 </script>
 
-<div class="grid grid-cols-1 md:grid-cols-3 gap-5 p-5">
+<div transition:fly="{{ y: 100, duration: 400 }}" class="grid grid-cols-1 md:grid-cols-3 gap-5 p-5 duration-150">
     {#each posts as post} 
-    <a href={`/post${post.uri}`}>
+    <a sveltekit:prefetch href={`/post${post.uri}`}>
         <div class={"flex flex-col hover:scale-105 duration-150"}>
             <img src={post.featuredImage.node.mediaItemUrl} alt={post.featuredImage.node.altText} />
             <div class="flex gap-2 w-5 h-5 my-2">
